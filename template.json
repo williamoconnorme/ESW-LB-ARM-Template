@@ -1,0 +1,1301 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "availabilitySets_ESW_VM_AS_name": {
+            "defaultValue": "ESW-VM-AS",
+            "type": "String"
+        },
+        "loadBalancers_eShopWorld_LB_name": {
+            "defaultValue": "eShopWorld-LB",
+            "type": "String"
+        },
+        "publicIPAddresses_ESW_LB_IP_name": {
+            "defaultValue": "ESW-LB-IP",
+            "type": "String"
+        },
+        "virtualMachines_ESW_WEB01_VM_name": {
+            "defaultValue": "ESW-WEB01-VM",
+            "type": "String"
+        },
+        "virtualMachines_ESW_WEB02_VM_name": {
+            "defaultValue": "ESW-WEB02-VM",
+            "type": "String"
+        },
+        "virtualNetworks_EShopWorld_VNet_name": {
+            "defaultValue": "EShopWorld-VNet",
+            "type": "String"
+        },
+        "networkInterfaces_esw_web01_vm611_name": {
+            "defaultValue": "esw-web01-vm611",
+            "type": "String"
+        },
+        "networkInterfaces_esw_web02_vm611_name": {
+            "defaultValue": "esw-web02-vm611",
+            "type": "String"
+        },
+        "publicIPAddresses_ESW_WEB01_VM_ip_name": {
+            "defaultValue": "ESW-WEB01-VM-ip",
+            "type": "String"
+        },
+        "publicIPAddresses_ESW_WEB02_VM_ip_name": {
+            "defaultValue": "ESW-WEB02-VM-ip",
+            "type": "String"
+        },
+        "networkSecurityGroups_ESW_WEB01_VM_nsg_name": {
+            "defaultValue": "ESW-WEB01-VM-nsg",
+            "type": "String"
+        },
+        "networkSecurityGroups_ESW_WEB02_VM_nsg_name": {
+            "defaultValue": "ESW-WEB02-VM-nsg",
+            "type": "String"
+        },
+        "schedules_shutdown_computevm_esw_web01_vm_name": {
+            "defaultValue": "shutdown-computevm-esw-web01-vm",
+            "type": "String"
+        },
+        "schedules_shutdown_computevm_esw_web02_vm_name": {
+            "defaultValue": "shutdown-computevm-esw-web02-vm",
+            "type": "String"
+        },
+        "subnets_LB_Subnet_BE_name": {
+            "defaultValue": "LB-Subnet-BE",
+            "type": "String"
+        },
+        "inboundNatRules_SSH_WEB_01_name": {
+            "defaultValue": "SSH-WEB-01",
+            "type": "String"
+        },
+        "inboundNatRules_SSH_WEB_02_name": {
+            "defaultValue": "SSH-WEB-02",
+            "type": "String"
+        },
+        "securityRules_SSH_name": {
+            "defaultValue": "SSH",
+            "type": "String"
+        },
+        "securityRules_SSH_name_1": {
+            "defaultValue": "SSH",
+            "type": "String"
+        },
+        "securityRules_HTTP_name": {
+            "defaultValue": "HTTP",
+            "type": "String"
+        },
+        "securityRules_HTTP_name_1": {
+            "defaultValue": "HTTP",
+            "type": "String"
+        },
+        "securityRules_HTTPS_name": {
+            "defaultValue": "HTTPS",
+            "type": "String"
+        },
+        "securityRules_HTTPS_name_1": {
+            "defaultValue": "HTTPS",
+            "type": "String"
+        },
+        "virtualMachines_ESW_WEB01_VM_id": {
+            "defaultValue": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Compute/disks/ESW-WEB01-VM_OsDisk_1_6c9fc20b363d4aa996941bbda0d7d068",
+            "type": "String"
+        },
+        "virtualMachines_ESW_WEB02_VM_id": {
+            "defaultValue": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Compute/disks/ESW-WEB02-VM_OsDisk_1_ad5f6f5b937743c7bc20c15a825d4615",
+            "type": "String"
+        },
+        "loadBalancers_eShopWorld_LB_id": {
+            "defaultValue": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/loadBalancers/eShopWorld-LB/frontendIPConfigurations/LoadBalancerFrontEnd",
+            "type": "String"
+        },
+        "loadBalancers_eShopWorld_LB_id_1": {
+            "defaultValue": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/loadBalancers/eShopWorld-LB/backendAddressPools/BP-1",
+            "type": "String"
+        },
+        "loadBalancers_eShopWorld_LB_id_2": {
+            "defaultValue": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/loadBalancers/eShopWorld-LB/probes/Web",
+            "type": "String"
+        },
+        "loadBalancers_eShopWorld_LB_id_3": {
+            "defaultValue": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/loadBalancers/eShopWorld-LB/frontendIPConfigurations/LoadBalancerFrontEnd",
+            "type": "String"
+        },
+        "loadBalancers_eShopWorld_LB_id_4": {
+            "defaultValue": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/loadBalancers/eShopWorld-LB/backendAddressPools/BP-1",
+            "type": "String"
+        },
+        "loadBalancers_eShopWorld_LB_id_5": {
+            "defaultValue": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/loadBalancers/eShopWorld-LB/probes/SSH",
+            "type": "String"
+        },
+        "loadBalancers_eShopWorld_LB_id_6": {
+            "defaultValue": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/loadBalancers/eShopWorld-LB/frontendIPConfigurations/LoadBalancerFrontEnd",
+            "type": "String"
+        },
+        "loadBalancers_eShopWorld_LB_id_7": {
+            "defaultValue": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/loadBalancers/eShopWorld-LB/frontendIPConfigurations/LoadBalancerFrontEnd",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Compute/availabilitySets/ESW-VM-AS'.",
+            "type": "Microsoft.Compute/availabilitySets",
+            "sku": {
+                "name": "Aligned"
+            },
+            "name": "[parameters('availabilitySets_ESW_VM_AS_name')]",
+            "apiVersion": "2018-06-01",
+            "location": "northeurope",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "platformUpdateDomainCount": 1,
+                "platformFaultDomainCount": 1,
+                "virtualMachines": [
+                    {
+                        "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_ESW_WEB01_VM_name'))]"
+                    },
+                    {
+                        "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_ESW_WEB02_VM_name'))]"
+                    }
+                ]
+            },
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Compute/virtualMachines/ESW-WEB01-VM'.",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('virtualMachines_ESW_WEB01_VM_name')]",
+            "apiVersion": "2018-06-01",
+            "location": "northeurope",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "availabilitySet": {
+                    "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_ESW_VM_AS_name'))]"
+                },
+                "hardwareProfile": {
+                    "vmSize": "Standard_B1s"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "OpenLogic",
+                        "offer": "CentOS",
+                        "sku": "7.5",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Linux",
+                        "name": "[concat(parameters('virtualMachines_ESW_WEB01_VM_name'),'_OsDisk_1_6c9fc20b363d4aa996941bbda0d7d068')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+							"storageAccountType": "Standard_LRS"
+                        },
+                        "diskSizeGB": 30
+                    },
+                    "dataDisks": []
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_ESW_WEB01_VM_name')]",
+                    "adminUsername": "william",
+					"adminPassword": "wertiowuawer134234324!",
+                    "linuxConfiguration": {
+                        "disablePasswordAuthentication": false,
+                        "provisionVMAgent": true
+                    },
+                    "secrets": [],
+                    "allowExtensionOperations": true
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_esw_web01_vm611_name'))]"
+                        }
+                    ]
+                }
+            },
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Compute/virtualMachines/ESW-WEB02-VM'.",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('virtualMachines_ESW_WEB02_VM_name')]",
+            "apiVersion": "2018-06-01",
+            "location": "northeurope",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "availabilitySet": {
+                    "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_ESW_VM_AS_name'))]"
+                },
+                "hardwareProfile": {
+                    "vmSize": "Standard_B1s"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "OpenLogic",
+                        "offer": "CentOS",
+                        "sku": "7.5",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Linux",
+                        "name": "[concat(parameters('virtualMachines_ESW_WEB02_VM_name'),'_OsDisk_1_ad5f6f5b937743c7bc20c15a825d4615')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+							"storageAccountType": "Standard_LRS"
+                        },
+                        "diskSizeGB": 30
+                    },
+                    "dataDisks": []
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_ESW_WEB02_VM_name')]",
+                    "adminUsername": "william",
+					"adminPassword": "wertiowuawer134234324!",
+                    "linuxConfiguration": {
+                        "disablePasswordAuthentication": false,
+                        "provisionVMAgent": true
+                    },
+                    "secrets": [],
+                    "allowExtensionOperations": true
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_esw_web02_vm611_name'))]"
+                        }
+                    ]
+                }
+            },
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourcegroups/ESW-RG/providers/microsoft.devtestlab/schedules/shutdown-computevm-esw-web01-vm'.",
+            "type": "microsoft.devtestlab/schedules",
+            "name": "[parameters('schedules_shutdown_computevm_esw_web01_vm_name')]",
+            "apiVersion": "2016-05-15",
+            "location": "northeurope",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "status": "Enabled",
+                "taskType": "ComputeVmShutdownTask",
+                "dailyRecurrence": {
+                    "time": "1900"
+                },
+                "timeZoneId": "GMT Standard Time",
+                "notificationSettings": {
+                    "status": "Disabled",
+                    "timeInMinutes": 30
+                },
+                "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_ESW_WEB01_VM_name'))]",
+                "provisioningState": "Succeeded",
+                "uniqueIdentifier": "b2515154-5b45-4a8e-8821-f03c54b84880"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_ESW_WEB01_VM_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourcegroups/ESW-RG/providers/microsoft.devtestlab/schedules/shutdown-computevm-esw-web02-vm'.",
+            "type": "microsoft.devtestlab/schedules",
+            "name": "[parameters('schedules_shutdown_computevm_esw_web02_vm_name')]",
+            "apiVersion": "2016-05-15",
+            "location": "northeurope",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "status": "Enabled",
+                "taskType": "ComputeVmShutdownTask",
+                "dailyRecurrence": {
+                    "time": "1900"
+                },
+                "timeZoneId": "GMT Standard Time",
+                "notificationSettings": {
+                    "status": "Disabled",
+                    "timeInMinutes": 30
+                },
+                "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_ESW_WEB02_VM_name'))]",
+                "provisioningState": "Succeeded",
+                "uniqueIdentifier": "a030d6e8-576d-4846-a340-2397131313b6"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_ESW_WEB02_VM_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/loadBalancers/eShopWorld-LB'.",
+            "type": "Microsoft.Network/loadBalancers",
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            },
+            "name": "[parameters('loadBalancers_eShopWorld_LB_name')]",
+            "apiVersion": "2018-10-01",
+            "location": "northeurope",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "d9f85417-f9b5-419d-9c95-ee3110521605",
+                "frontendIPConfigurations": [
+                    {
+                        "name": "LoadBalancerFrontEnd",
+                        "etag": "W/\"4fbcfcdd-0603-4fcb-aa57-24346b864c19\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_ESW_LB_IP_name'))]"
+                            }
+                        }
+                    }
+                ],
+                "backendAddressPools": [
+                    {
+                        "name": "BP-1",
+                        "etag": "W/\"4fbcfcdd-0603-4fcb-aa57-24346b864c19\"",
+                        "properties": {
+                            "provisioningState": "Succeeded"
+                        }
+                    }
+                ],
+                "loadBalancingRules": [
+                    {
+                        "name": "HTTP",
+                        "etag": "W/\"4fbcfcdd-0603-4fcb-aa57-24346b864c19\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "frontendIPConfiguration": {
+                                "id": "[parameters('loadBalancers_eShopWorld_LB_id')]"
+                            },
+                            "frontendPort": 80,
+                            "backendPort": 80,
+                            "enableFloatingIP": false,
+                            "idleTimeoutInMinutes": 4,
+                            "protocol": "Tcp",
+                            "enableTcpReset": false,
+                            "loadDistribution": "Default",
+                            "backendAddressPool": {
+                                "id": "[parameters('loadBalancers_eShopWorld_LB_id_1')]"
+                            },
+                            "probe": {
+                                "id": "[parameters('loadBalancers_eShopWorld_LB_id_2')]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "SSH",
+                        "etag": "W/\"4fbcfcdd-0603-4fcb-aa57-24346b864c19\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "frontendIPConfiguration": {
+                                "id": "[parameters('loadBalancers_eShopWorld_LB_id_3')]"
+                            },
+                            "frontendPort": 2222,
+                            "backendPort": 22,
+                            "enableFloatingIP": false,
+                            "idleTimeoutInMinutes": 4,
+                            "protocol": "Tcp",
+                            "enableTcpReset": false,
+                            "loadDistribution": "SourceIP",
+                            "backendAddressPool": {
+                                "id": "[parameters('loadBalancers_eShopWorld_LB_id_4')]"
+                            },
+                            "probe": {
+                                "id": "[parameters('loadBalancers_eShopWorld_LB_id_5')]"
+                            }
+                        }
+                    }
+                ],
+                "probes": [
+                    {
+                        "name": "SSH",
+                        "etag": "W/\"4fbcfcdd-0603-4fcb-aa57-24346b864c19\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "Tcp",
+                            "port": 22,
+                            "intervalInSeconds": 5,
+                            "numberOfProbes": 2
+                        }
+                    },
+                    {
+                        "name": "Web",
+                        "etag": "W/\"4fbcfcdd-0603-4fcb-aa57-24346b864c19\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "Http",
+                            "port": 80,
+                            "requestPath": "/health-check.htm",
+                            "intervalInSeconds": 5,
+                            "numberOfProbes": 2
+                        }
+                    }
+                ],
+                "inboundNatRules": [
+                    {
+                        "name": "SSH-WEB-01",
+                        "etag": "W/\"4fbcfcdd-0603-4fcb-aa57-24346b864c19\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "frontendIPConfiguration": {
+                                "id": "[parameters('loadBalancers_eShopWorld_LB_id_6')]"
+                            },
+                            "frontendPort": 2223,
+                            "backendPort": 2223,
+                            "enableFloatingIP": false,
+                            "idleTimeoutInMinutes": 4,
+                            "protocol": "Tcp",
+                            "enableTcpReset": false
+                        }
+                    },
+                    {
+                        "name": "SSH-WEB-02",
+                        "etag": "W/\"4fbcfcdd-0603-4fcb-aa57-24346b864c19\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "frontendIPConfiguration": {
+                                "id": "[parameters('loadBalancers_eShopWorld_LB_id_7')]"
+                            },
+                            "frontendPort": 2224,
+                            "backendPort": 2224,
+                            "enableFloatingIP": false,
+                            "idleTimeoutInMinutes": 4,
+                            "protocol": "Tcp",
+                            "enableTcpReset": false
+                        }
+                    }
+                ],
+                "inboundNatPools": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_ESW_LB_IP_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/networkInterfaces/esw-web01-vm611'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_esw_web01_vm611_name')]",
+            "apiVersion": "2018-10-01",
+            "location": "northeurope",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "c0138608-2e0c-4e9a-b9fe-d6b53f9a50e1",
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "etag": "W/\"3ebeb309-72a3-4307-9a2b-3e70bda229b0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAddress": "10.0.2.4",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_ESW_WEB01_VM_ip_name'))]"
+                            },
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_EShopWorld_VNet_name'), parameters('subnets_LB_Subnet_BE_name'))]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4",
+                            "loadBalancerBackendAddressPools": [
+                                {
+                                    "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_eShopWorld_LB_name')), '/backendAddressPools/BP-1')]"
+                                }
+                            ],
+                            "loadBalancerInboundNatRules": [
+                                {
+                                    "id": "[resourceId('Microsoft.Network/loadBalancers/inboundNatRules', parameters('loadBalancers_eShopWorld_LB_name'), parameters('inboundNatRules_SSH_WEB_01_name'))]"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": [],
+                    "appliedDnsServers": [],
+                    "internalDomainNameSuffix": "vttb3xkk0b3etkwd5cyrr3hswe.fx.internal.cloudapp.net"
+                },
+                "macAddress": "00-0D-3A-B4-0F-50",
+                "enableAcceleratedNetworking": false,
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_ESW_WEB01_VM_nsg_name'))]"
+                },
+                "primary": true,
+                "tapConfigurations": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_ESW_WEB01_VM_ip_name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_EShopWorld_VNet_name'), parameters('subnets_LB_Subnet_BE_name'))]",
+                "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_eShopWorld_LB_name'))]",
+                "[resourceId('Microsoft.Network/loadBalancers/inboundNatRules', parameters('loadBalancers_eShopWorld_LB_name'), parameters('inboundNatRules_SSH_WEB_01_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_ESW_WEB01_VM_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/networkInterfaces/esw-web02-vm611'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_esw_web02_vm611_name')]",
+            "apiVersion": "2018-10-01",
+            "location": "northeurope",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "5b50f7ff-6136-45d5-a02c-640c3e34d714",
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "etag": "W/\"41539728-9e31-4a3b-89a1-0c96ac40f769\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAddress": "10.0.2.5",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_ESW_WEB02_VM_ip_name'))]"
+                            },
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_EShopWorld_VNet_name'), parameters('subnets_LB_Subnet_BE_name'))]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4",
+                            "loadBalancerBackendAddressPools": [
+                                {
+                                    "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_eShopWorld_LB_name')), '/backendAddressPools/BP-1')]"
+                                }
+                            ],
+                            "loadBalancerInboundNatRules": [
+                                {
+                                    "id": "[resourceId('Microsoft.Network/loadBalancers/inboundNatRules', parameters('loadBalancers_eShopWorld_LB_name'), parameters('inboundNatRules_SSH_WEB_02_name'))]"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": [],
+                    "appliedDnsServers": [],
+                    "internalDomainNameSuffix": "vttb3xkk0b3etkwd5cyrr3hswe.fx.internal.cloudapp.net"
+                },
+                "macAddress": "00-0D-3A-B4-85-8E",
+                "enableAcceleratedNetworking": false,
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_ESW_WEB02_VM_nsg_name'))]"
+                },
+                "primary": true,
+                "tapConfigurations": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_ESW_WEB02_VM_ip_name'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_EShopWorld_VNet_name'), parameters('subnets_LB_Subnet_BE_name'))]",
+                "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_eShopWorld_LB_name'))]",
+                "[resourceId('Microsoft.Network/loadBalancers/inboundNatRules', parameters('loadBalancers_eShopWorld_LB_name'), parameters('inboundNatRules_SSH_WEB_02_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_ESW_WEB02_VM_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/networkSecurityGroups/ESW-WEB01-VM-nsg'.",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "[parameters('networkSecurityGroups_ESW_WEB01_VM_nsg_name')]",
+            "apiVersion": "2018-10-01",
+            "location": "northeurope",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "36bec73a-94fa-4abb-8cb1-bba1a146bb1c",
+                "securityRules": [
+                    {
+                        "name": "HTTP",
+                        "etag": "W/\"56160875-0a80-49b8-b076-6055d6b39e38\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "80",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 300,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "HTTPS",
+                        "etag": "W/\"56160875-0a80-49b8-b076-6055d6b39e38\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "443",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 320,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "SSH",
+                        "etag": "W/\"56160875-0a80-49b8-b076-6055d6b39e38\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "22",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 340,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    }
+                ],
+                "defaultSecurityRules": [
+                    {
+                        "name": "AllowVnetInBound",
+                        "etag": "W/\"56160875-0a80-49b8-b076-6055d6b39e38\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow inbound traffic from all VMs in VNET",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "VirtualNetwork",
+                            "destinationAddressPrefix": "VirtualNetwork",
+                            "access": "Allow",
+                            "priority": 65000,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowAzureLoadBalancerInBound",
+                        "etag": "W/\"56160875-0a80-49b8-b076-6055d6b39e38\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow inbound traffic from azure load balancer",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "AzureLoadBalancer",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 65001,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "DenyAllInBound",
+                        "etag": "W/\"56160875-0a80-49b8-b076-6055d6b39e38\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Deny all inbound traffic",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Deny",
+                            "priority": 65500,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowVnetOutBound",
+                        "etag": "W/\"56160875-0a80-49b8-b076-6055d6b39e38\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow outbound traffic from all VMs to all VMs in VNET",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "VirtualNetwork",
+                            "destinationAddressPrefix": "VirtualNetwork",
+                            "access": "Allow",
+                            "priority": 65000,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowInternetOutBound",
+                        "etag": "W/\"56160875-0a80-49b8-b076-6055d6b39e38\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow outbound traffic from all VMs to Internet",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "Internet",
+                            "access": "Allow",
+                            "priority": 65001,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "DenyAllOutBound",
+                        "etag": "W/\"56160875-0a80-49b8-b076-6055d6b39e38\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Deny all outbound traffic",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Deny",
+                            "priority": 65500,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/networkSecurityGroups/ESW-WEB02-VM-nsg'.",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "[parameters('networkSecurityGroups_ESW_WEB02_VM_nsg_name')]",
+            "apiVersion": "2018-10-01",
+            "location": "northeurope",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "d225b8d7-146c-49df-88aa-ec48a01efe23",
+                "securityRules": [
+                    {
+                        "name": "HTTP",
+                        "etag": "W/\"d26c90b4-580e-4094-81a8-29a3d76f302e\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "80",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 300,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "HTTPS",
+                        "etag": "W/\"d26c90b4-580e-4094-81a8-29a3d76f302e\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "443",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 320,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "SSH",
+                        "etag": "W/\"d26c90b4-580e-4094-81a8-29a3d76f302e\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "22",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 340,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    }
+                ],
+                "defaultSecurityRules": [
+                    {
+                        "name": "AllowVnetInBound",
+                        "etag": "W/\"d26c90b4-580e-4094-81a8-29a3d76f302e\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow inbound traffic from all VMs in VNET",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "VirtualNetwork",
+                            "destinationAddressPrefix": "VirtualNetwork",
+                            "access": "Allow",
+                            "priority": 65000,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowAzureLoadBalancerInBound",
+                        "etag": "W/\"d26c90b4-580e-4094-81a8-29a3d76f302e\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow inbound traffic from azure load balancer",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "AzureLoadBalancer",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 65001,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "DenyAllInBound",
+                        "etag": "W/\"d26c90b4-580e-4094-81a8-29a3d76f302e\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Deny all inbound traffic",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Deny",
+                            "priority": 65500,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowVnetOutBound",
+                        "etag": "W/\"d26c90b4-580e-4094-81a8-29a3d76f302e\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow outbound traffic from all VMs to all VMs in VNET",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "VirtualNetwork",
+                            "destinationAddressPrefix": "VirtualNetwork",
+                            "access": "Allow",
+                            "priority": 65000,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowInternetOutBound",
+                        "etag": "W/\"d26c90b4-580e-4094-81a8-29a3d76f302e\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow outbound traffic from all VMs to Internet",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "Internet",
+                            "access": "Allow",
+                            "priority": 65001,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "DenyAllOutBound",
+                        "etag": "W/\"d26c90b4-580e-4094-81a8-29a3d76f302e\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Deny all outbound traffic",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Deny",
+                            "priority": 65500,
+                            "direction": "Outbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/publicIPAddresses/ESW-LB-IP'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            },
+            "name": "[parameters('publicIPAddresses_ESW_LB_IP_name')]",
+            "apiVersion": "2018-10-01",
+            "location": "northeurope",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "e88877b9-8fb1-4d86-b581-678cba30e27a",
+                "ipAddress": "13.70.194.107",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Static",
+                "idleTimeoutInMinutes": 4,
+                "ipTags": []
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/publicIPAddresses/ESW-WEB01-VM-ip'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            },
+            "name": "[parameters('publicIPAddresses_ESW_WEB01_VM_ip_name')]",
+            "apiVersion": "2018-10-01",
+            "location": "northeurope",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "1e1b3050-3c2d-4563-bd45-78e0b013d5f4",
+                "ipAddress": "40.127.182.180",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Dynamic",
+                "idleTimeoutInMinutes": 4,
+                "ipTags": []
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/publicIPAddresses/ESW-WEB02-VM-ip'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            },
+            "name": "[parameters('publicIPAddresses_ESW_WEB02_VM_ip_name')]",
+            "apiVersion": "2018-10-01",
+            "location": "northeurope",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "e9577625-6a58-463f-84a0-d920535d9836",
+                "ipAddress": "40.127.186.232",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Dynamic",
+                "idleTimeoutInMinutes": 4,
+                "ipTags": []
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/virtualNetworks/EShopWorld-VNet'.",
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[parameters('virtualNetworks_EShopWorld_VNet_name')]",
+            "apiVersion": "2018-10-01",
+            "location": "northeurope",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "dd1ee6ac-d04a-497a-aac3-f8b118f4f2b4",
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.0.0.0/16"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "LB-Subnet-BE",
+                        "etag": "W/\"6c0dc9f3-e6a5-42d4-bcd1-4353b1149e2b\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "addressPrefix": "10.0.2.0/24",
+                            "serviceEndpoints": [],
+                            "delegations": []
+                        }
+                    }
+                ],
+                "virtualNetworkPeerings": [],
+                "enableDdosProtection": false,
+                "enableVmProtection": false
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/loadBalancers/eShopWorld-LB/inboundNatRules/SSH-WEB-01'.",
+            "type": "Microsoft.Network/loadBalancers/inboundNatRules",
+            "name": "[concat(parameters('loadBalancers_eShopWorld_LB_name'), '/', parameters('inboundNatRules_SSH_WEB_01_name'))]",
+            "apiVersion": "2018-10-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "frontendIPConfiguration": {
+                    "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_eShopWorld_LB_name')), '/frontendIPConfigurations/LoadBalancerFrontEnd')]"
+                },
+                "frontendPort": 2223,
+                "backendPort": 2223,
+                "enableFloatingIP": false,
+                "idleTimeoutInMinutes": 4,
+                "protocol": "Tcp",
+                "enableTcpReset": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_eShopWorld_LB_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/loadBalancers/eShopWorld-LB/inboundNatRules/SSH-WEB-02'.",
+            "type": "Microsoft.Network/loadBalancers/inboundNatRules",
+            "name": "[concat(parameters('loadBalancers_eShopWorld_LB_name'), '/', parameters('inboundNatRules_SSH_WEB_02_name'))]",
+            "apiVersion": "2018-10-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "frontendIPConfiguration": {
+                    "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_eShopWorld_LB_name')), '/frontendIPConfigurations/LoadBalancerFrontEnd')]"
+                },
+                "frontendPort": 2224,
+                "backendPort": 2224,
+                "enableFloatingIP": false,
+                "idleTimeoutInMinutes": 4,
+                "protocol": "Tcp",
+                "enableTcpReset": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_eShopWorld_LB_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/networkSecurityGroups/ESW-WEB01-VM-nsg/securityRules/HTTP'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('networkSecurityGroups_ESW_WEB01_VM_nsg_name'), '/', parameters('securityRules_HTTP_name'))]",
+            "apiVersion": "2018-10-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "protocol": "TCP",
+                "sourcePortRange": "*",
+                "destinationPortRange": "80",
+                "sourceAddressPrefix": "*",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 300,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_ESW_WEB01_VM_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/networkSecurityGroups/ESW-WEB01-VM-nsg/securityRules/HTTPS'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('networkSecurityGroups_ESW_WEB01_VM_nsg_name'), '/', parameters('securityRules_HTTPS_name'))]",
+            "apiVersion": "2018-10-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "protocol": "TCP",
+                "sourcePortRange": "*",
+                "destinationPortRange": "443",
+                "sourceAddressPrefix": "*",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 320,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_ESW_WEB01_VM_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/networkSecurityGroups/ESW-WEB01-VM-nsg/securityRules/SSH'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('networkSecurityGroups_ESW_WEB01_VM_nsg_name'), '/', parameters('securityRules_SSH_name'))]",
+            "apiVersion": "2018-10-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "protocol": "TCP",
+                "sourcePortRange": "*",
+                "destinationPortRange": "22",
+                "sourceAddressPrefix": "*",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 340,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_ESW_WEB01_VM_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/networkSecurityGroups/ESW-WEB02-VM-nsg/securityRules/HTTP'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('networkSecurityGroups_ESW_WEB02_VM_nsg_name'), '/', parameters('securityRules_HTTP_name_1'))]",
+            "apiVersion": "2018-10-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "protocol": "TCP",
+                "sourcePortRange": "*",
+                "destinationPortRange": "80",
+                "sourceAddressPrefix": "*",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 300,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_ESW_WEB02_VM_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/networkSecurityGroups/ESW-WEB02-VM-nsg/securityRules/HTTPS'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('networkSecurityGroups_ESW_WEB02_VM_nsg_name'), '/', parameters('securityRules_HTTPS_name_1'))]",
+            "apiVersion": "2018-10-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "protocol": "TCP",
+                "sourcePortRange": "*",
+                "destinationPortRange": "443",
+                "sourceAddressPrefix": "*",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 320,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_ESW_WEB02_VM_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/networkSecurityGroups/ESW-WEB02-VM-nsg/securityRules/SSH'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('networkSecurityGroups_ESW_WEB02_VM_nsg_name'), '/', parameters('securityRules_SSH_name_1'))]",
+            "apiVersion": "2018-10-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "protocol": "TCP",
+                "sourcePortRange": "*",
+                "destinationPortRange": "22",
+                "sourceAddressPrefix": "*",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 340,
+                "direction": "Inbound",
+                "sourcePortRanges": [],
+                "destinationPortRanges": [],
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_ESW_WEB02_VM_nsg_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/virtualNetworks/EShopWorld-VNet/subnets/LB-Subnet-BE'.",
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "name": "[concat(parameters('virtualNetworks_EShopWorld_VNet_name'), '/', parameters('subnets_LB_Subnet_BE_name'))]",
+            "apiVersion": "2018-10-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "addressPrefix": "10.0.2.0/24",
+                "serviceEndpoints": [],
+                "delegations": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_EShopWorld_VNet_name'))]"
+            ]
+        }
+    ]
+}

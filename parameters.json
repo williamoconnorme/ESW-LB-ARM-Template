@@ -1,0 +1,138 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "availabilitySets_ESW_VM_AS_name": {
+            "value": "ESW-VM-AS",
+            "type": "String"
+        },
+        "loadBalancers_eShopWorld_LB_name": {
+            "value": "eShopWorld-LB",
+            "type": "String"
+        },
+        "publicIPAddresses_ESW_LB_IP_name": {
+            "value": "ESW-LB-IP",
+            "type": "String"
+        },
+        "virtualMachines_ESW_WEB01_VM_name": {
+            "value": "ESW-WEB01-VM",
+            "type": "String"
+        },
+        "virtualMachines_ESW_WEB02_VM_name": {
+            "value": "ESW-WEB02-VM",
+            "type": "String"
+        },
+        "virtualNetworks_EShopWorld_VNet_name": {
+            "value": "EShopWorld-VNet",
+            "type": "String"
+        },
+        "networkInterfaces_esw_web01_vm611_name": {
+            "value": "esw-web01-vm611",
+            "type": "String"
+        },
+        "networkInterfaces_esw_web02_vm611_name": {
+            "value": "esw-web02-vm611",
+            "type": "String"
+        },
+        "publicIPAddresses_ESW_WEB01_VM_ip_name": {
+            "value": "ESW-WEB01-VM-ip",
+            "type": "String"
+        },
+        "publicIPAddresses_ESW_WEB02_VM_ip_name": {
+            "value": "ESW-WEB02-VM-ip",
+            "type": "String"
+        },
+        "networkSecurityGroups_ESW_WEB01_VM_nsg_name": {
+            "value": "ESW-WEB01-VM-nsg",
+            "type": "String"
+        },
+        "networkSecurityGroups_ESW_WEB02_VM_nsg_name": {
+            "value": "ESW-WEB02-VM-nsg",
+            "type": "String"
+        },
+        "schedules_shutdown_computevm_esw_web01_vm_name": {
+            "value": "shutdown-computevm-esw-web01-vm",
+            "type": "String"
+        },
+        "schedules_shutdown_computevm_esw_web02_vm_name": {
+            "value": "shutdown-computevm-esw-web02-vm",
+            "type": "String"
+        },
+        "subnets_LB_Subnet_BE_name": {
+            "value": "LB-Subnet-BE",
+            "type": "String"
+        },
+        "inboundNatRules_SSH_WEB_01_name": {
+            "value": "SSH-WEB-01",
+            "type": "String"
+        },
+        "inboundNatRules_SSH_WEB_02_name": {
+            "value": "SSH-WEB-02",
+            "type": "String"
+        },
+        "securityRules_SSH_name": {
+            "value": "SSH",
+            "type": "String"
+        },
+        "securityRules_SSH_name_1": {
+            "value": "SSH",
+            "type": "String"
+        },
+        "securityRules_HTTP_name": {
+            "value": "HTTP",
+            "type": "String"
+        },
+        "securityRules_HTTP_name_1": {
+            "value": "HTTP",
+            "type": "String"
+        },
+        "securityRules_HTTPS_name": {
+            "value": "HTTPS",
+            "type": "String"
+        },
+        "securityRules_HTTPS_name_1": {
+            "value": "HTTPS",
+            "type": "String"
+        },
+        "virtualMachines_ESW_WEB01_VM_id": {
+            "value": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Compute/disks/ESW-WEB01-VM_OsDisk_1_6c9fc20b363d4aa996941bbda0d7d068",
+            "type": "String"
+        },
+        "virtualMachines_ESW_WEB02_VM_id": {
+            "value": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Compute/disks/ESW-WEB02-VM_OsDisk_1_ad5f6f5b937743c7bc20c15a825d4615",
+            "type": "String"
+        },
+        "loadBalancers_eShopWorld_LB_id": {
+            "value": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/loadBalancers/eShopWorld-LB/frontendIPConfigurations/LoadBalancerFrontEnd",
+            "type": "String"
+        },
+        "loadBalancers_eShopWorld_LB_id_1": {
+            "value": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/loadBalancers/eShopWorld-LB/backendAddressPools/BP-1",
+            "type": "String"
+        },
+        "loadBalancers_eShopWorld_LB_id_2": {
+            "value": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/loadBalancers/eShopWorld-LB/probes/Web",
+            "type": "String"
+        },
+        "loadBalancers_eShopWorld_LB_id_3": {
+            "value": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/loadBalancers/eShopWorld-LB/frontendIPConfigurations/LoadBalancerFrontEnd",
+            "type": "String"
+        },
+        "loadBalancers_eShopWorld_LB_id_4": {
+            "value": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/loadBalancers/eShopWorld-LB/backendAddressPools/BP-1",
+            "type": "String"
+        },
+        "loadBalancers_eShopWorld_LB_id_5": {
+            "value": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/loadBalancers/eShopWorld-LB/probes/SSH",
+            "type": "String"
+        },
+        "loadBalancers_eShopWorld_LB_id_6": {
+            "value": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/loadBalancers/eShopWorld-LB/frontendIPConfigurations/LoadBalancerFrontEnd",
+            "type": "String"
+        },
+        "loadBalancers_eShopWorld_LB_id_7": {
+            "value": "/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Network/loadBalancers/eShopWorld-LB/frontendIPConfigurations/LoadBalancerFrontEnd",
+            "type": "String"
+        }
+    }
+}
