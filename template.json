@@ -214,6 +214,10 @@
                     ]
                 }
             },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_ESW_VM_AS_name'))]",
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_esw_web01_vm611_name'))]"
+            ]
         },
         {
             "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourceGroups/ESW-RG/providers/Microsoft.Compute/virtualMachines/ESW-WEB02-VM'.",
@@ -268,6 +272,10 @@
                     ]
                 }
             },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_ESW_VM_AS_name'))]",
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_esw_web02_vm611_name'))]"
+            ]
         },
         {
             "comments": "Generalized from resource: '/subscriptions/4db33b44-5066-48c1-84cc-e67c3ae86ba3/resourcegroups/ESW-RG/providers/microsoft.devtestlab/schedules/shutdown-computevm-esw-web01-vm'.",
